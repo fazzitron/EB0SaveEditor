@@ -23,7 +23,7 @@ namespace EB0SaveEditor
             end += Constants.OFFSET;
             int length = end - start + 1;
 
-            Console.WriteLine("Reading from 0x{0:X} to 0x{1:X}", start, end);
+            //Console.WriteLine("Reading from 0x{0:X} to 0x{1:X}", start, end);
 
             byte[] s1 = data.SubArray(start, length);
             string s2 = "";
@@ -43,7 +43,7 @@ namespace EB0SaveEditor
             end += Constants.OFFSET;
             int length = end - start + 1;
 
-            Console.WriteLine("Saving from 0x{0:X} to 0x{1:X}", start, end);
+            //Console.WriteLine("Saving from 0x{0:X} to 0x{1:X}", start, end);
 
             byte[] ret = data;
             for (int x = 0; x < val.Length; x++)
@@ -78,7 +78,7 @@ namespace EB0SaveEditor
             for (int x = 0; x < s.Length; x++)
             {
                 int i2 = s[x];
-                Console.WriteLine("Reading 0x{0:X}-0x{1:X}", start+x, i2);
+                //Console.WriteLine("Reading 0x{0:X}-0x{1:X}", start+x, i2);
                 i1 += i2 << count;
                 count += 8;
             }
@@ -89,7 +89,7 @@ namespace EB0SaveEditor
         void saveValue(byte[] data, int val, int start)
         {
             start += Constants.OFFSET;
-            Console.WriteLine("Saving at {0:X}", start);
+            //Console.WriteLine("Saving at {0:X}", start);
 
             //int i = 0;
         }

@@ -9,6 +9,8 @@ namespace EB0SaveEditor
 {
     class CharacterTab : TabPage
     {
+        private protected int CharacterID = 0;
+
         private protected System.Windows.Forms.Label nameLabel;
         private protected System.Windows.Forms.TextBox nameBox;
 
@@ -121,7 +123,6 @@ namespace EB0SaveEditor
         private protected System.Windows.Forms.CheckBox puzzledStatusCheckbox;
         private protected System.Windows.Forms.CheckBox poisonStatusCheckbox;
         private protected System.Windows.Forms.CheckBox coldStatusCheckbox;
-
         public CharacterTab() : base()
         {
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
@@ -1474,6 +1475,107 @@ namespace EB0SaveEditor
             Item6.Items.AddRange(Constants.ITEM_DICT);
             Item7.Items.AddRange(Constants.ITEM_DICT);
             Item8.Items.AddRange(Constants.ITEM_DICT);
+        }
+
+        public void initializeData(byte[] fileBytes)
+        {
+            string charName = Constants.CHARACTERS[this.CharacterID / 0x40];
+            nameBox.Text = Functions.getName(fileBytes, this.CharacterID);
+            MaxHP.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.MAX_HP);
+            MaxPP.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.MAX_PP);
+            CurHP.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.CURRENT_HP);
+            CurPP.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.CURRENT_PP);
+            Offense.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.OFFENSE);
+            Defense.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.DEFENSE);
+            Fight.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.FIGHT);
+            Speed.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.SPEED);
+            Wisdom.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.WISDOM);
+            Strength.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.STRENGTH);
+            Force.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.FORCE);
+            Level.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.LEVEL);
+            Exp.Value = Functions.getStat(fileBytes, this.CharacterID, Constants.EXPERIENCE);
+
+            List<int> nItems = Functions.getItems(fileBytes, this.CharacterID);
+            Item1.SelectedIndex = nItems[0];
+            Item2.SelectedIndex = nItems[1];
+            Item3.SelectedIndex = nItems[2];
+            Item4.SelectedIndex = nItems[3];
+            Item5.SelectedIndex = nItems[4];
+            Item6.SelectedIndex = nItems[5];
+            Item7.SelectedIndex = nItems[6];
+            Item8.SelectedIndex = nItems[7];
+
+            int Status = Functions.getStat(fileBytes, this.CharacterID, Constants.STATUS);
+
+            coldStatusCheckbox.Checked = (Status & (1 << Constants.COLD)) > 0;
+            poisonStatusCheckbox.Checked = (Status & (1 << Constants.POISON)) > 0;
+            puzzledStatusCheckbox.Checked = (Status & (1 << Constants.PUZZLED)) > 0;
+            confusedStatusCheckbox.Checked = (Status & (1 << Constants.CONFUSED)) > 0;
+            sleepStatusCheckbox.Checked = (Status & (1 << Constants.SLEEP)) > 0;
+            paralysisStatusCheckbox.Checked = (Status & (1 << Constants.PARALYSIS)) > 0;
+            stoneStatusCheckbox.Checked = (Status & (1 << Constants.STONE)) > 0;
+            faintdStatusCheckbox.Checked = (Status & (1 << Constants.FAINTED)) > 0;
+
+            int weaponVal = Functions.getStat(fileBytes, this.CharacterID, Constants.WEAPON);
+            if (weaponVal != 0)
+            {
+                try
+                {
+                    Weapon.SelectedIndex = weaponVal - 0x0A;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Weapon Value {0}-0x{1:X}", charName, weaponVal);
+                    Weapon.Text = "INVALID";
+                }
+
+                int coinVal = Functions.getStat(fileBytes, this.CharacterID, Constants.COIN);
+                try
+                {
+                    Coin.SelectedIndex = coinVal - 0x2D;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Coin Vaule for {0}-0x{1:X}", charName, coinVal);
+                    Coin.Text = "INVALID";
+                }
+            }
+
+            int ringValue = Functions.getStat(fileBytes, this.CharacterID, Constants.RING);
+            if (ringValue != 0) {
+                try
+                {
+                    if (ringValue == 4)
+                    {
+                        ringValue = 0;
+                    }
+                    else
+                    {
+                        ringValue -= 0x30;
+                        ringValue += 1;
+                    }
+                    Ring.SelectedIndex = ringValue;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Ring Vaule for {0}-0x{1:X}", charName, ringValue);
+                    Ring.Text = "INVALID";
+                }
+            }
+
+            int pendantValue = Functions.getStat(fileBytes, this.CharacterID, Constants.PENDANT);
+            if (pendantValue != 0)
+            {
+                try
+                {
+                    Pendant.SelectedIndex = pendantValue - 0x33;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Pendant Vaule for {0}-0x{1:X}", charName, pendantValue);
+                    Pendant.Text = "INVALID";
+                }
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace EB0SaveEditor
             this.bankLabel = new System.Windows.Forms.Label();
             this.moneyLabel = new System.Windows.Forms.Label();
             this.mainNameLabel = new System.Windows.Forms.Label();
-            this.NintenTab = new System.Windows.Forms.TabPage();
+            this.TemplateTab = new System.Windows.Forms.TabPage();
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
             this.rawStatusLabel = new System.Windows.Forms.Label();
             this.faintdStatusCheckbox = new System.Windows.Forms.CheckBox();
@@ -155,13 +155,13 @@ namespace EB0SaveEditor
             this.saveButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.spritePictureBox = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.spritePictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.generalTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMoney)).BeginInit();
-            this.NintenTab.SuspendLayout();
+            this.TemplateTab.SuspendLayout();
             this.statusGroupBox.SuspendLayout();
             this.equipmentGroupBox.SuspendLayout();
             this.inventoryGroupBox.SuspendLayout();
@@ -187,7 +187,7 @@ namespace EB0SaveEditor
             // tabControl
             // 
             this.tabControl.Controls.Add(this.generalTabPage);
-            this.tabControl.Controls.Add(this.NintenTab);
+            this.tabControl.Controls.Add(this.TemplateTab);
             this.tabControl.Location = new System.Drawing.Point(13, 40);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -286,23 +286,23 @@ namespace EB0SaveEditor
             this.mainNameLabel.TabIndex = 0;
             this.mainNameLabel.Text = "Main Name:";
             // 
-            // NintenTab
+            // TemplateTab
             // 
-            this.NintenTab.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.NintenTab.Controls.Add(this.statusGroupBox);
-            this.NintenTab.Controls.Add(this.nName);
-            this.NintenTab.Controls.Add(this.nameLabel);
-            this.NintenTab.Controls.Add(this.equipmentGroupBox);
-            this.NintenTab.Controls.Add(this.inventoryGroupBox);
-            this.NintenTab.Controls.Add(this.magicGroupBox);
-            this.NintenTab.Controls.Add(this.statGroupBox);
-            this.NintenTab.Controls.Add(this.spriteGroupBox);
-            this.NintenTab.Location = new System.Drawing.Point(4, 22);
-            this.NintenTab.Name = "NintenTab";
-            this.NintenTab.Padding = new System.Windows.Forms.Padding(3);
-            this.NintenTab.Size = new System.Drawing.Size(824, 421);
-            this.NintenTab.TabIndex = 0;
-            this.NintenTab.Text = "Template";
+            this.TemplateTab.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TemplateTab.Controls.Add(this.statusGroupBox);
+            this.TemplateTab.Controls.Add(this.nName);
+            this.TemplateTab.Controls.Add(this.nameLabel);
+            this.TemplateTab.Controls.Add(this.equipmentGroupBox);
+            this.TemplateTab.Controls.Add(this.inventoryGroupBox);
+            this.TemplateTab.Controls.Add(this.magicGroupBox);
+            this.TemplateTab.Controls.Add(this.statGroupBox);
+            this.TemplateTab.Controls.Add(this.spriteGroupBox);
+            this.TemplateTab.Location = new System.Drawing.Point(4, 22);
+            this.TemplateTab.Name = "TemplateTab";
+            this.TemplateTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TemplateTab.Size = new System.Drawing.Size(824, 421);
+            this.TemplateTab.TabIndex = 0;
+            this.TemplateTab.Text = "Template";
             // 
             // statusGroupBox
             // 
@@ -1522,16 +1522,6 @@ namespace EB0SaveEditor
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "ninten.png");
             // 
-            // spritePictureBox
-            // 
-            this.spritePictureBox.Image = global::EB0SaveEditor.Properties.Resources.ninten;
-            this.spritePictureBox.Location = new System.Drawing.Point(7, 20);
-            this.spritePictureBox.Name = "spritePictureBox";
-            this.spritePictureBox.Size = new System.Drawing.Size(64, 64);
-            this.spritePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.spritePictureBox.TabIndex = 0;
-            this.spritePictureBox.TabStop = false;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(576, 11);
@@ -1541,6 +1531,16 @@ namespace EB0SaveEditor
             this.button1.Text = "About";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // spritePictureBox
+            // 
+            this.spritePictureBox.Image = global::EB0SaveEditor.Properties.Resources.ninten;
+            this.spritePictureBox.Location = new System.Drawing.Point(7, 20);
+            this.spritePictureBox.Name = "spritePictureBox";
+            this.spritePictureBox.Size = new System.Drawing.Size(64, 64);
+            this.spritePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.spritePictureBox.TabIndex = 0;
+            this.spritePictureBox.TabStop = false;
             // 
             // Form1
             // 
@@ -1559,8 +1559,8 @@ namespace EB0SaveEditor
             this.generalTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMoney)).EndInit();
-            this.NintenTab.ResumeLayout(false);
-            this.NintenTab.PerformLayout();
+            this.TemplateTab.ResumeLayout(false);
+            this.TemplateTab.PerformLayout();
             this.statusGroupBox.ResumeLayout(false);
             this.statusGroupBox.PerformLayout();
             this.equipmentGroupBox.ResumeLayout(false);
@@ -1594,7 +1594,7 @@ namespace EB0SaveEditor
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage NintenTab;
+        private System.Windows.Forms.TabPage TemplateTab;
         private System.Windows.Forms.GroupBox spriteGroupBox;
         private System.Windows.Forms.TabPage generalTabPage;
         private System.Windows.Forms.Button openButton;

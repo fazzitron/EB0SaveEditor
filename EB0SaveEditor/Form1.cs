@@ -22,6 +22,8 @@ namespace EB0SaveEditor
             InitializeComponent();
             Constants.itemDictBuilder();
 
+            tabControl.Controls.Remove(TemplateTab);
+
             NintenTab nt = new NintenTab();
             AnaTab at = new AnaTab();
             LoidTab lt = new LoidTab();
@@ -62,40 +64,40 @@ namespace EB0SaveEditor
             mMoney.Value = money;
             mBank.Value = bank;
 
-            nName.Text = Functions.getName(fileBytes, Constants.NINTEN);
-            nMaxHP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.MAX_HP);
-            nMaxPP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.MAX_PP);
-            nCurHP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.CURRENT_HP);
-            nCurPP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.CURRENT_PP);
-            nOffense.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.OFFENSE);
-            nDefense.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.DEFENSE);
-            nFight.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.FIGHT);
-            nSpeed.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.SPEED);
-            nWisdom.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.WISDOM);
-            nStrength.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.STRENGTH);
-            nForce.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.FORCE);
-            nLevel.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.LEVEL);
-            nExp.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.EXPERIENCE);
+            //nName.Text = Functions.getName(fileBytes, Constants.NINTEN);
+            //nMaxHP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.MAX_HP);
+            //nMaxPP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.MAX_PP);
+            //nCurHP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.CURRENT_HP);
+            //nCurPP.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.CURRENT_PP);
+            //nOffense.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.OFFENSE);
+            //nDefense.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.DEFENSE);
+            //nFight.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.FIGHT);
+            //nSpeed.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.SPEED);
+            //nWisdom.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.WISDOM);
+            //nStrength.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.STRENGTH);
+            //nForce.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.FORCE);
+            //nLevel.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.LEVEL);
+            //nExp.Value = Functions.getStat(fileBytes, Constants.NINTEN, Constants.EXPERIENCE);
 
-            List<int> nItems = Functions.getItems(fileBytes, Constants.NINTEN);
-            nItem1.SelectedIndex = nItems[0];
-            nItem2.SelectedIndex = nItems[1];
-            nItem3.SelectedIndex = nItems[2];
-            nItem4.SelectedIndex = nItems[3];
-            nItem5.SelectedIndex = nItems[4];
-            nItem6.SelectedIndex = nItems[5];
-            nItem7.SelectedIndex = nItems[6];
-            nItem8.SelectedIndex = nItems[7];
+            //List<int> nItems = Functions.getItems(fileBytes, Constants.NINTEN);
+            //nItem1.SelectedIndex = nItems[0];
+            //nItem2.SelectedIndex = nItems[1];
+            //nItem3.SelectedIndex = nItems[2];
+            //nItem4.SelectedIndex = nItems[3];
+            //nItem5.SelectedIndex = nItems[4];
+            //nItem6.SelectedIndex = nItems[5];
+            //nItem7.SelectedIndex = nItems[6];
+            //nItem8.SelectedIndex = nItems[7];
 
-            int nStatus = Functions.getStat(fileBytes, Constants.NINTEN, Constants.STATUS);
+            //int nStatus = Functions.getStat(fileBytes, Constants.NINTEN, Constants.STATUS);
 
-            nt.setData(fileBytes);
-            at.setData(fileBytes);
-            lt.setData(fileBytes);
-            tt.setData(fileBytes);
-            pt.setData(fileBytes);
-            et.setData(fileBytes);
-            ft.setData(fileBytes);
+            nt.initializeData(fileBytes);
+            at.initializeData(fileBytes);
+            lt.initializeData(fileBytes);
+            tt.initializeData(fileBytes);
+            pt.initializeData(fileBytes);
+            et.initializeData(fileBytes);
+            ft.initializeData(fileBytes);
         }
 
         private void button1_Click(object sender, EventArgs e)
