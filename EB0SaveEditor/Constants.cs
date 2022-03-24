@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace EB0SaveEditor
 {
+    //Hex value reference
+    //http://shrines.rpgclassics.com/nes/ebz/magic.shtml
     class Constants
     {
         //public static int OFFSET = 0x1283;
@@ -51,14 +53,14 @@ namespace EB0SaveEditor
         public static int FLY = 0x180;
 
         //CHARACTER STATS
-        static int STATUS = 0x1441;
+        public static int STATUS = 0x1441;
         public static int[] MAX_HP = { 0x1443, 0x1444 };
         public static int[] MAX_PP = { 0x1445, 0x1446 };
         public static int[] OFFENSE = { 0x1447, 0x1448 };
         public static int[] DEFENSE = { 0x1449, 0x144A };
         public static int FIGHT = 0x144B;
         public static int SPEED = 0x144c;
-        public int WISDOM = 0x144d;
+        public static int WISDOM = 0x144d;
         public static int STRENGTH = 0x144e;
         public static int FORCE = 0x144f;
         public static int LEVEL = 0x1450;
@@ -213,7 +215,7 @@ namespace EB0SaveEditor
             "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"
         };
 
-        public static void itemTableBuilder()
+        public static void itemDictBuilder()
         {
             ITEM_DICT[NOTHING] = "(EMPTY)";
             ITEM_DICT[BIG_BAG] = "Big Bag";
