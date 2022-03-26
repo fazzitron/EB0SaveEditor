@@ -157,6 +157,10 @@ namespace EB0SaveEditor
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.spritePictureBox = new System.Windows.Forms.PictureBox();
+            this.pkFireACheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireBCheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireGCheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireOCheckbox = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.generalTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mBank)).BeginInit();
@@ -191,7 +195,7 @@ namespace EB0SaveEditor
             this.tabControl.Location = new System.Drawing.Point(13, 40);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(832, 447);
+            this.tabControl.Size = new System.Drawing.Size(922, 447);
             this.tabControl.TabIndex = 0;
             // 
             // generalTabPage
@@ -300,7 +304,7 @@ namespace EB0SaveEditor
             this.TemplateTab.Location = new System.Drawing.Point(4, 22);
             this.TemplateTab.Name = "TemplateTab";
             this.TemplateTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TemplateTab.Size = new System.Drawing.Size(824, 421);
+            this.TemplateTab.Size = new System.Drawing.Size(914, 421);
             this.TemplateTab.TabIndex = 0;
             this.TemplateTab.Text = "Template";
             // 
@@ -705,6 +709,10 @@ namespace EB0SaveEditor
             // 
             // magicGroupBox
             // 
+            this.magicGroupBox.Controls.Add(this.pkFireOCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireGCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireBCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireACheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderGCheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderBCheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderACheckbox);
@@ -749,7 +757,7 @@ namespace EB0SaveEditor
             this.magicGroupBox.Controls.Add(this.rawMagicLabel);
             this.magicGroupBox.Location = new System.Drawing.Point(213, 6);
             this.magicGroupBox.Name = "magicGroupBox";
-            this.magicGroupBox.Size = new System.Drawing.Size(600, 194);
+            this.magicGroupBox.Size = new System.Drawing.Size(694, 194);
             this.magicGroupBox.TabIndex = 2;
             this.magicGroupBox.TabStop = false;
             this.magicGroupBox.Text = "Magic";
@@ -1542,11 +1550,52 @@ namespace EB0SaveEditor
             this.spritePictureBox.TabIndex = 0;
             this.spritePictureBox.TabStop = false;
             // 
+            // pkFireACheckbox
+            // 
+            this.pkFireACheckbox.AutoSize = true;
+            this.pkFireACheckbox.Location = new System.Drawing.Point(613, 42);
+            this.pkFireACheckbox.Name = "pkFireACheckbox";
+            this.pkFireACheckbox.Size = new System.Drawing.Size(70, 17);
+            this.pkFireACheckbox.TabIndex = 84;
+            this.pkFireACheckbox.Text = "PK Fire α";
+            this.pkFireACheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireBCheckbox
+            // 
+            this.pkFireBCheckbox.AutoSize = true;
+            this.pkFireBCheckbox.Location = new System.Drawing.Point(613, 63);
+            this.pkFireBCheckbox.Name = "pkFireBCheckbox";
+            this.pkFireBCheckbox.Size = new System.Drawing.Size(69, 17);
+            this.pkFireBCheckbox.TabIndex = 85;
+            this.pkFireBCheckbox.Text = "PK Fire β";
+            this.pkFireBCheckbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pkFireBCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireGCheckbox
+            // 
+            this.pkFireGCheckbox.AutoSize = true;
+            this.pkFireGCheckbox.Location = new System.Drawing.Point(613, 83);
+            this.pkFireGCheckbox.Name = "pkFireGCheckbox";
+            this.pkFireGCheckbox.Size = new System.Drawing.Size(69, 17);
+            this.pkFireGCheckbox.TabIndex = 86;
+            this.pkFireGCheckbox.Text = "PK Fire γ";
+            this.pkFireGCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireOCheckbox
+            // 
+            this.pkFireOCheckbox.AutoSize = true;
+            this.pkFireOCheckbox.Location = new System.Drawing.Point(613, 103);
+            this.pkFireOCheckbox.Name = "pkFireOCheckbox";
+            this.pkFireOCheckbox.Size = new System.Drawing.Size(72, 17);
+            this.pkFireOCheckbox.TabIndex = 87;
+            this.pkFireOCheckbox.Text = "PK Fire Ω";
+            this.pkFireOCheckbox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 498);
+            this.ClientSize = new System.Drawing.Size(948, 498);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.saveButton);
@@ -1719,6 +1768,10 @@ namespace EB0SaveEditor
         private System.Windows.Forms.CheckBox poisonStatusCheckbox;
         private System.Windows.Forms.CheckBox coldStatusCheckbox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox pkFireOCheckbox;
+        private System.Windows.Forms.CheckBox pkFireGCheckbox;
+        private System.Windows.Forms.CheckBox pkFireBCheckbox;
+        private System.Windows.Forms.CheckBox pkFireACheckbox;
     }
 }
 

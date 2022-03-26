@@ -123,6 +123,10 @@ namespace EB0SaveEditor
         private protected System.Windows.Forms.CheckBox puzzledStatusCheckbox;
         private protected System.Windows.Forms.CheckBox poisonStatusCheckbox;
         private protected System.Windows.Forms.CheckBox coldStatusCheckbox;
+        private protected System.Windows.Forms.CheckBox pkFireOCheckbox;
+        private protected System.Windows.Forms.CheckBox pkFireGCheckbox;
+        private protected System.Windows.Forms.CheckBox pkFireBCheckbox;
+        private protected System.Windows.Forms.CheckBox pkFireACheckbox;
         public CharacterTab() : base()
         {
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
@@ -164,6 +168,10 @@ namespace EB0SaveEditor
             this.item1Label = new System.Windows.Forms.Label();
             this.Item1 = new System.Windows.Forms.ComboBox();
             this.magicGroupBox = new System.Windows.Forms.GroupBox();
+            this.pkFireACheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireBCheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireGCheckbox = new System.Windows.Forms.CheckBox();
+            this.pkFireOCheckbox = new System.Windows.Forms.CheckBox();
             this.pkThunderGCheckbox = new System.Windows.Forms.CheckBox();
             this.pkThunderBCheckbox = new System.Windows.Forms.CheckBox();
             this.pkThunderACheckbox = new System.Windows.Forms.CheckBox();
@@ -249,7 +257,7 @@ namespace EB0SaveEditor
             this.Controls.Add(this.spriteGroupBox);
             this.Location = new System.Drawing.Point(4, 22);
             this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(824, 421);
+            this.Size = new System.Drawing.Size(914, 421);
 
             // 
             // spriteGroupBox
@@ -453,6 +461,10 @@ namespace EB0SaveEditor
             // 
             // magicGroupBox
             // 
+            this.magicGroupBox.Controls.Add(this.pkFireOCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireGCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireBCheckbox);
+            this.magicGroupBox.Controls.Add(this.pkFireACheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderGCheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderBCheckbox);
             this.magicGroupBox.Controls.Add(this.pkThunderACheckbox);
@@ -497,7 +509,7 @@ namespace EB0SaveEditor
             this.magicGroupBox.Controls.Add(this.rawMagicLabel);
             this.magicGroupBox.Location = new System.Drawing.Point(213, 6);
             this.magicGroupBox.Name = "magicGroupBox";
-            this.magicGroupBox.Size = new System.Drawing.Size(600, 194);
+            this.magicGroupBox.Size = new System.Drawing.Size(694, 194);
             this.magicGroupBox.TabIndex = 2;
             this.magicGroupBox.TabStop = false;
             this.magicGroupBox.Text = "Magic";
@@ -1339,6 +1351,49 @@ namespace EB0SaveEditor
             this.pkThunderBCheckbox.TabIndex = 82;
             this.pkThunderBCheckbox.Text = "PK Thunder β:";
             this.pkThunderBCheckbox.UseVisualStyleBackColor = true;
+
+            // 
+            // pkFireACheckbox
+            // 
+            this.pkFireACheckbox.AutoSize = true;
+            this.pkFireACheckbox.Location = new System.Drawing.Point(613, 42);
+            this.pkFireACheckbox.Name = "pkFireACheckbox";
+            this.pkFireACheckbox.Size = new System.Drawing.Size(70, 17);
+            this.pkFireACheckbox.TabIndex = 84;
+            this.pkFireACheckbox.Text = "PK Fire α";
+            this.pkFireACheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireBCheckbox
+            // 
+            this.pkFireBCheckbox.AutoSize = true;
+            this.pkFireBCheckbox.Location = new System.Drawing.Point(613, 63);
+            this.pkFireBCheckbox.Name = "pkFireBCheckbox";
+            this.pkFireBCheckbox.Size = new System.Drawing.Size(69, 17);
+            this.pkFireBCheckbox.TabIndex = 85;
+            this.pkFireBCheckbox.Text = "PK Fire β";
+            this.pkFireBCheckbox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pkFireBCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireGCheckbox
+            // 
+            this.pkFireGCheckbox.AutoSize = true;
+            this.pkFireGCheckbox.Location = new System.Drawing.Point(613, 83);
+            this.pkFireGCheckbox.Name = "pkFireGCheckbox";
+            this.pkFireGCheckbox.Size = new System.Drawing.Size(69, 17);
+            this.pkFireGCheckbox.TabIndex = 86;
+            this.pkFireGCheckbox.Text = "PK Fire γ";
+            this.pkFireGCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pkFireOCheckbox
+            // 
+            this.pkFireOCheckbox.AutoSize = true;
+            this.pkFireOCheckbox.Location = new System.Drawing.Point(613, 103);
+            this.pkFireOCheckbox.Name = "pkFireOCheckbox";
+            this.pkFireOCheckbox.Size = new System.Drawing.Size(72, 17);
+            this.pkFireOCheckbox.TabIndex = 87;
+            this.pkFireOCheckbox.Text = "PK Fire Ω";
+            this.pkFireOCheckbox.UseVisualStyleBackColor = true;
+
             // 
             // pkThunderGCheckbox
             // 
@@ -1576,6 +1631,78 @@ namespace EB0SaveEditor
                     Pendant.Text = "INVALID";
                 }
             }
+
+            byte[] magicArray = Functions.readByteArray(fileBytes, this.CharacterID + Constants.MAGIC[0], 8);
+
+            try
+            {
+                int charIndex = this.CharacterID / 0x40;
+                Console.WriteLine(
+                    "{0}.magicArray = [0x{1:X}, 0x{2:X}, 0x{3:X}, 0x{4:X}, 0x{5:X}, 0x{6:X}, 0x{7:X}, 0x{8:X}]",
+                    Constants.CHARACTERS[charIndex],
+                    magicArray[0],
+                    magicArray[1],
+                    magicArray[2],
+                    magicArray[3],
+                    magicArray[4],
+                    magicArray[5],
+                    magicArray[6],
+                    magicArray[7]
+                );
+            } catch
+            {
+                Console.WriteLine("Error reading {0}'s magicArray", Constants.CHARACTERS[this.CharacterID]);
+                foreach(byte b in magicArray)
+                {
+                    Console.WriteLine("0x{0:X}", b);
+                }
+            }
+
+            telepathyCheckbox.Checked = (magicArray[Constants.MAGIC_TELEPATHY_INDEX] & (1 << Constants.MAGIC_TELEPATHY)) > 0;
+            teleportCheckbox.Checked = (magicArray[Constants.MAGIC_TELEPORT_INDEX] & (1 << Constants.MAGIC_TELEPORT)) > 0;
+            lifeupACheckbox.Checked = (magicArray[Constants.MAGIC_LIFEUP_A_INDEX] & (1 << Constants.MAGIC_LIFEUP_A)) > 0;
+            lifeupBCheckbox.Checked = (magicArray[Constants.MAGIC_LIFEUP_B_INDEX] & (1 << Constants.MAGIC_LIFEUP_B)) > 0;
+            lifeupGCheckbox.Checked = (magicArray[Constants.MAGIC_LIFEUP_G_INDEX] & (1 << Constants.MAGIC_LIFEUP_G)) > 0;
+            lifeupPCheckbox.Checked = (magicArray[Constants.MAGIC_LIFEUP_P_INDEX] & (1 << Constants.MAGIC_LIFEUP_P)) > 0;
+            lifeupOCheckbox.Checked = (magicArray[Constants.MAGIC_LIFEUP_O_INDEX] & (1 << Constants.MAGIC_LIFEUP_O)) > 0;
+            healingACheckbox.Checked = (magicArray[Constants.MAGIC_HEALING_A_INDEX] & (1 << Constants.MAGIC_HEALING_A)) > 0;
+            healingBCheckbox.Checked = (magicArray[Constants.MAGIC_HEALING_B_INDEX] & (1 << Constants.MAGIC_HEALING_B)) > 0;
+            healingGCheckbox.Checked = (magicArray[Constants.MAGIC_HEALING_G_INDEX] & (1 << Constants.MAGIC_HEALING_G)) > 0;
+            healingPCheckbox.Checked = (magicArray[Constants.MAGIC_HEALING_P_INDEX] & (1 << Constants.MAGIC_HEALING_P)) > 0;
+            suprHealingCheckbox.Checked = (magicArray[Constants.MAGIC_SUPRHEALING_INDEX] & (1 << Constants.MAGIC_SUPRHEALING)) > 0;
+            psiShieldACheckbox.Checked = (magicArray[Constants.MAGIC_PSISHIELD_A_INDEX] & (1 << Constants.MAGIC_PSISHIELD_A)) > 0;
+            psiShieldBCheckbox.Checked = (magicArray[Constants.MAGIC_PSISHIELD_B_INDEX] & (1 << Constants.MAGIC_PSISHIELD_B)) > 0;
+            powerShieldCheckbox.Checked = (magicArray[Constants.MAGIC_POWERSHIELD_INDEX] & (1 << Constants.MAGIC_POWERSHIELD)) > 0;
+            brainShockCheckbox.Checked = (magicArray[Constants.MAGIC_BRAINSHOCK_INDEX] & (1 << Constants.MAGIC_BRAINSHOCK)) > 0;
+            brainCyclonCheckbox.Checked = (magicArray[Constants.MAGIC_BRAINCYCLON_INDEX] & (1 << Constants.MAGIC_BRAINCYCLON)) > 0;
+            hypnosisCheckbox.Checked = (magicArray[Constants.MAGIC_HYPNOSIS_INDEX] & (1 << Constants.MAGIC_HYPNOSIS)) > 0;
+            paralysisCheckbox.Checked = (magicArray[Constants.MAGIC_PARALYSIS_INDEX] & (1 << Constants.MAGIC_PARALYSIS)) > 0;
+            darknessCheckbox.Checked = (magicArray[Constants.MAGIC_DARKNESS_INDEX] & (1 << Constants.MAGIC_DARKNESS)) > 0;
+            psiMagnetCheckbox.Checked = (magicArray[Constants.MAGIC_PSIMAGNET_INDEX] & (1 << Constants.MAGIC_PSIMAGNET)) > 0;
+            shieldOffCheckbox.Checked = (magicArray[Constants.MAGIC_SHIELDOFF_INDEX] & (1 << Constants.MAGIC_SHIELDOFF)) > 0;
+            psiBlockCheckbox.Checked = (magicArray[Constants.MAGIC_PSIBLOCK_INDEX] & (1 << Constants.MAGIC_PSIBLOCK)) > 0;
+            offenseUpCheckbox.Checked = (magicArray[Constants.MAGIC_OFFENSEUP_INDEX] & (1 << Constants.MAGIC_OFFENSEUP)) > 0;
+            defenseUpACheckbox.Checked = (magicArray[Constants.MAGIC_DEFENSEUP_A_INDEX] & (1 << Constants.MAGIC_DEFENSEUP_A)) > 0;
+            defenseUpBCheckbox.Checked = (magicArray[Constants.MAGIC_DEFENSEUP_B_INDEX] & (1 << Constants.MAGIC_DEFENSEUP_B)) > 0;
+            quickUpCheckbox.Checked = (magicArray[Constants.MAGIC_QUICKUP_INDEX] & (1 << Constants.MAGIC_QUICKUP)) > 0;
+            defDownACheckbox.Checked = (magicArray[Constants.MAGIC_DEFDOWN_A_INDEX] & (1 << Constants.MAGIC_DEFDOWN_A)) > 0;
+            defenseDownBCheckbox.Checked = (magicArray[Constants.MAGIC_DEFDOWN_B_INDEX] & (1 << Constants.MAGIC_DEFDOWN_B)) > 0;
+            fourDSlipCheckbox.Checked = (magicArray[Constants.MAGIC_4THDSLIP_INDEX] & (1 << Constants.MAGIC_4THDSLIP)) > 0;
+            pkFreezeACheckbox.Checked = (magicArray[Constants.MAGIC_PKFREEZE_A_INDEX] & (1 << Constants.MAGIC_PKFREEZE_A)) > 0;
+            pkFreezeBCheckbox.Checked = (magicArray[Constants.MAGIC_PKFREEZE_B_INDEX] & (1 << Constants.MAGIC_PKFREEZE_B)) > 0;
+            pkFreezeGCheckbox.Checked = (magicArray[Constants.MAGIC_PKFREEZE_G_INDEX] & (1 << Constants.MAGIC_PKFREEZE_G)) > 0;
+            pkFreezeOCheckbox.Checked = (magicArray[Constants.MAGIC_PKFREEZE_O_INDEX] & (1 << Constants.MAGIC_PKFREEZE_O)) > 0;
+            pkBeamACheckbox.Checked = (magicArray[Constants.MAGIC_PKBEAM_A_INDEX] & (1 << Constants.MAGIC_PKBEAM_A)) > 0;
+            pkBeamBCheckbox.Checked = (magicArray[Constants.MAGIC_PKBEAM_B_INDEX] & (1 << Constants.MAGIC_PKBEAM_B)) > 0;
+            pkBeamGCheckbox.Checked = (magicArray[Constants.MAGIC_PKBEAM_G_INDEX] & (1 << Constants.MAGIC_PKBEAM_G)) > 0;
+            pkBeamOCheckbox.Checked = (magicArray[Constants.MAGIC_PKBEAM_O_INDEX] & (1 << Constants.MAGIC_PKBEAM_O)) > 0;
+            pkThunderACheckbox.Checked = (magicArray[Constants.MAGIC_PKTHUNDER_A_INDEX] & (1 << Constants.MAGIC_PKTHUNDER_A)) > 0;
+            pkThunderBCheckbox.Checked = (magicArray[Constants.MAGIC_PKTHUNDER_B_INDEX] & (1 << Constants.MAGIC_PKTHUNDER_B)) > 0;
+            pkThunderGCheckbox.Checked = (magicArray[Constants.MAGIC_PKTHUNDER_G_INDEX] & (1 << Constants.MAGIC_PKTHUNDER_G)) > 0;
+            pkFireACheckbox.Checked = (magicArray[Constants.MAGIC_PKFIRE_A_INDEX] & (1 << Constants.MAGIC_PKFIRE_A)) > 0;
+            pkFireBCheckbox.Checked = (magicArray[Constants.MAGIC_PKFIRE_B_INDEX] & (1 << Constants.MAGIC_PKFIRE_B)) > 0;
+            pkFireGCheckbox.Checked = (magicArray[Constants.MAGIC_PKFIRE_G_INDEX] & (1 << Constants.MAGIC_PKFIRE_G)) > 0;
+            pkFireOCheckbox.Checked = (magicArray[Constants.MAGIC_PKFIRE_O_INDEX] & (1 << Constants.MAGIC_PKFIRE_O)) > 0;
         }
     }
 }

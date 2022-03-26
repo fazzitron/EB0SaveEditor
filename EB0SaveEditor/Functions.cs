@@ -86,6 +86,19 @@ namespace EB0SaveEditor
             return i1;
         }
 
+        public static byte[] readByteArray(byte[] data, int start, int length)
+        {
+            byte[] ret = new byte[length];
+
+            for (int x = 0; x < length; x++)
+            {
+                int addr = start + x;
+                ret[x] = data[addr];
+            }
+
+            return ret;
+        }
+
         void saveValue(byte[] data, int val, int start)
         {
             start += Constants.OFFSET;
